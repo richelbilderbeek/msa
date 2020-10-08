@@ -3,3 +3,5 @@
 *.so
 *.bak
 *.BAK
+.Rproj.user
+msa.Rproj
