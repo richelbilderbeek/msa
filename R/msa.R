@@ -17,9 +17,20 @@ msa <- function(inputSeqs,
         cat(readLines(file), sep="\n")
     }
 
-    method <- match.arg(method)
 
-    msaFun <- match.fun(paste0("msa", method))
+    #method <- match.arg(method)
+
+    #msaFun <- match.fun(paste0("msa", method))
+
+    if (length(method) != 1) {
+        stop("Cannot pick more than one method")
+    }
+
+    msaFun <- NA
+    if (method == "ClustalW") msaFun <- msa::msaClustalW
+    else if (method == "ClustalOmega") msaFun <- msa::msaClustalOmega
+    else if (method == "Muscle") msaFun <- msa::msaMuscle
+    else stop("Invalid method 'method', with value ", method)
 
     out <- msaFun(inputSeqs=inputSeqs,
                   cluster=cluster,
