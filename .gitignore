@@ -5,3 +5,4 @@
 *.BAK
 .Rproj.user
 msa.Rproj
+src/*.a
